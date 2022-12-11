@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+openai-key.txt
+.idrea
+.idea
