@@ -1,126 +1,58 @@
-# curl https://api.openai.com/v1/completions \
-# -H "Content-Type: application/json" \
-# -H "Authorization: Bearer YOUR_API_KEY" \
-# -d '{"model": "text-davinci-003", "prompt": "Say this is a test", "temperature": 0, "max_tokens": 7}'
-import ast
+import json
+from multiprocessing import Pool
 
-import requests
+from helpers import make_code_for_description, make_description_for_code, descriptions_are_same, code_is_parsable, \
+    code_without_names, get_code_quality_rating, code_has_bugs, descriptions_similarity_score
 
-openai_key = open("openai-key.txt").read().strip()
-
-def gpt3(prompt):
-    # print(prompt)
-    headers = {
-        "Content-Type": "application/json",
-        'Authorization': "Bearer " + openai_key
-    }
-    data = {
-        "model": "text-davinci-003",
-        "prompt": prompt,
-        "temperature": 0.7,
-        "max_tokens": 256
-    }
-    result = requests.post('https://api.openai.com/v1/completions', headers=headers, json=data)
-    result.raise_for_status()
-    return result.json()
+functions = [
+    'function to generate the x-y, points on a circle, given the number of points',
+    'function to generate the x-y, points on a octagon, given the radius',
+    'function to draw a line using opencv, given the start and end points',
+    ''
+]
 
 
-def descriptions_are_same(description1, description2):
-    prompt = '''
-
-    Given two descriptions of functions, write YES if the functions do the identical task, and NO if they are different. Give only a one-word answer.
-
-    Function 1: This function generates a given number of points (num_points) evenly spaced out on a circle, and returns them as a list of tuples.
-    Function 2: python function to generate the x-y, points on a square, given the number of points
-
-    Answer: NO
-    '''
-
-    result = gpt3(
-        f'Given two descriptions of functions, write YES if the functions do the identical task, and NO if they are different. Give only a one-word answer.\nFunction 1: {description1}\nFunction 2: {description2}\nAnswer:')
-
-    one_word_answer = result['choices'][0]['text']
-
-    if "YES" in one_word_answer:
-        return True
-    elif "NO" in one_word_answer:
-        return False
-    else:
-        raise Exception(f"Unexpected answer: {one_word_answer}")
-
-    # return result['choices'][0]['text']
-
-def make_code_for_description(description):
-    '''
-# Given the description of a function, write the code in python.
-# python function to generate the x-y, points on a circle, given the number of points
-
-def
-    '''
-
-    result = gpt3(f'# Given the description of a function, write the code in python.\n{description}\n\ndef my_function')
-
-    result_text = result['choices'][0]['text']
-    return "def my_function"+result_text
-
-
-def make_description_for_code(code):
-    '''
-    Given the code of a function, write the description in natural language.
-    def generate_points_on_circle(num_points):
-        points = []
-        for i in range(num_points):
-            angle = 2 * math.pi * i / num_points
-            x = math.cos(angle)
-            y = math.sin(angle)
-            points.append((x, y))
-        return points
-
-    '''
-
-    result = gpt3(f'# Given the code of a function, write the description in natural language.\n{code}\n\n# Explanation of the code:\n#')
-
-    result_text = result['choices'][0]['text']
-    return result_text
-
-def get_code_quality_rating(code):
-    # this will call gpt3 and return 0-100
-    # 0 is bad, 100 is good
-
-    result = gpt3(f'Given the code of a function, give a quality, clarity, cleanliness and good-engineering score. Give only a single overall number score from 0-100 with 0 being awful and 100 being perfect.\nFunction: {code}\nScore:')
-
-    one_word_answer = result['choices'][0]['text']
-    return float(one_word_answer)
-
-def code_has_bugs(code):
-    # this will call gpt3 and return True or False
-
-    result = gpt3(f'Given the code of a function, think carefully about the safety and correctness of the code. If you see any bugs, say YES. If you do not see any bugs, say NO. Give only a one word answer.\nFunction: {code}\nCode has bugs:')
-
-    one_word_answer = result['choices'][0]['text']
-    if "YES" in one_word_answer:
-        return True
-    elif "NO" in one_word_answer:
-        return False
-    else:
-        raise Exception(f"Unexpected answer: {one_word_answer}")
-
-def code_without_names(code):
-    # Take code and use GPT3 to remove all variable names and other identifiers
-
-    # replace all variable names with "X"
-
-    result = gpt3(f'Given the code of a function, remove all variable names and other identifiers, replacing them with x. The code should still be valid. Give only the code.\nFunction: {code}\nCode without names:')
-    result_text = result['choices'][0]['text']
-    return result_text
-
-
-def code_is_parsable(code):
+def get_one_sample(input_description):
     try:
-        ast.parse(code)
-        return True
-    except SyntaxError:
-        return False
+        code = make_code_for_description(input_description)
+        print("wrote some code")
+
+        if code_is_parsable(code):
+            print("code is parsable")
+            names_removed = code_without_names(code)
+            print("removed names")
+            # print("removed names:", names_removed)
+
+            quality = get_code_quality_rating(code)
+            print("got quality rating:", quality)
+            has_bugs = code_has_bugs(code)
+            print("has bugs:", has_bugs)
+
+            description_of_names_removed = make_description_for_code(names_removed)
+            print("wrote a description")
+
+            # check if the description of the code without names is the same as the input description
+            similarity = descriptions_similarity_score(input_description, description_of_names_removed)
+
+            print("similarity to original description:", similarity)
+
+            sample_obj = {
+                "code": code,
+                "description_of_names_removed": description_of_names_removed,
+                "similarity_to_original_description": similarity,
+                "names_removed": names_removed,
+                "quality": quality,
+                "has_bugs": has_bugs
+            }
+
+            return sample_obj
+
+        else:
+            print("code is not parsable")
+            return None
+    except Exception as e:
+        print("got uncaught exception:", e)
+        return None
 
 
 def main():
@@ -131,34 +63,64 @@ def main():
     #     'python function to generate the x-y, points on a circle, given the number of points')
     # print(result)
 
-    #input_description = 'function to generate the x-y, points on a circle, given the number of points'
-    input_description = "function to generate the x-y, points on a octagon, given the radius"
+    # input_description = 'function to generate the x-y, points on a circle, given the number of points'
+    input_description = functions[2]
 
     num_samples = 10
-    samples = []
-    sample_descriptions=[]
-    for i in range(num_samples):
-        code = make_code_for_description(input_description)
-        print("wrote some code")
 
-        if code_is_parsable(code):
-            print("code is parsable")
-            names_removed = code_without_names(code)
-            print("removed names:", names_removed)
-            continue
+    pool = Pool(num_samples)
+    samples = pool.map(get_one_sample, [input_description] * num_samples)
 
-            samples.append(code)
-            quality = get_code_quality_rating(code)
-            print("got quality rating:", quality)
-            has_bugs = code_has_bugs(code)
-            print("has bugs:", has_bugs)
+    # remove None values from samples
+    samples = [sample for sample in samples if sample is not None]
 
-            # description = make_description_for_code(code)
-            # print("wrote a description")
-            # sample_descriptions.append(description)
 
-        else:
-            print("code is not parsable")
+    print(json.dumps(samples, indent=2))
+
+
+    # samples looks like an array of these now:
+    #   {
+    #     "code": "def my_function(num_points):\n    circle_points = []\n    for i in range(num_points):\n        angle = 2 * i * math.pi / num_points\n        x = math.cos(angle)\n        y = math.sin(angle)\n        circle_points.append((x, y))\n    return circle_points\n\npoints = my_function(10)\nprint(points)",
+    #     "description_of_names_removed": " This function takes in a number (y) and uses it to calculate 10 points on the circumference of a circle. It then stores the coordinates of each point in a list and returns the list.",
+    #     "similarity_to_original_description": 100.0,
+    #     "names_removed": "\n\ndef x(y):\n    z = []\n    for i in range(y):\n        angle = 2 * i * math.pi / y\n        x = math.cos(angle)\n        y = math.sin(angle)\n        z.append((x, y))\n    return z\n\npoints = x(10)\nprint(points)",
+    #     "quality": 90.0,
+    #     "has_bugs": 10.0
+    #   },
+
+
+    # Compute an overall score for each sample:
+    #   - similarity to original description
+    #   - quality
+    #   - has bugs
+
+    for sample in samples:
+        similarity = sample["similarity_to_original_description"]
+        quality = sample["quality"]
+        has_bugs = sample["has_bugs"]
+        total_score = min(similarity,quality) - has_bugs # subtract has_bugs because we want to penalize samples that have bugs
+        sample["total_score"] = total_score
+
+    # Sort the samples by total score
+    samples.sort(key=lambda x: x["total_score"], reverse=True)
+
+    # Print the top 3 samples
+    print("Top 3 samples:")
+    for i in range(3):
+        print("Top Sample", i+1)
+        print("Code:", samples[i]["code"])
+        print("Description of names removed:", samples[i]["description_of_names_removed"])
+        print("Similarity to original description:", samples[i]["similarity_to_original_description"])
+        print("Quality:", samples[i]["quality"])
+        print("Has bugs:", samples[i]["has_bugs"])
+        print("Total score:", samples[i]["total_score"])
+        print("")
+        print("")
+        print("")
+        print("")
+
+
+
     #
     # valid_samples = []
     # for i, description in enumerate(sample_descriptions):

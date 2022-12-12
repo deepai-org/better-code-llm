@@ -1,0 +1,199 @@
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+removed names
+got quality rating: 70.0
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+has bugs: 0.0
+wrote some code
+wrote some code
+code is parsable
+code is parsable
+removed names
+wrote some code
+code is parsable
+got quality rating: 90.0
+has bugs: 0.0
+removed names
+removed names
+got quality rating: 80.0
+got quality rating: 75.0
+wrote a description
+has bugs: 0.0
+has bugs: 0.0
+wrote some code
+code is parsable
+similarity to original description: 80.0
+wrote a description
+removed names
+wrote a description
+similarity to original description: 80.0
+got quality rating: 70.0
+removed names
+removed names
+removed names
+similarity to original description: 80.0
+has bugs: 0.0
+got quality rating: 70.0
+wrote a description
+removed names
+got quality rating: 80.0
+got quality rating: 70.0
+has bugs: 10.0
+similarity to original description: 10.0
+has bugs: 10.0
+got quality rating: 75.0
+has bugs: 10.0
+has bugs: 0.0
+wrote a description
+removed names
+wrote a description
+wrote a description
+wrote a description
+got quality rating: 40.0
+similarity to original description: 100.0
+wrote a description
+similarity to original description: 0.0
+similarity to original description: 100.0
+similarity to original description: 100.0
+has bugs: 10.0
+similarity to original description: 80.0
+wrote a description
+similarity to original description: 90.0
+[
+  {
+    "code": "def my_function(start_point, end_point):\n  import cv2\n  image = np.zeros((512, 512, 3), np.uint8)\n  cv2.line(image, start_point, end_point, (255,0, 0), 5)\n  return image",
+    "description_of_names_removed": " This function creates a 512 x 512 3-dimensional array of unsigned 8-bit integers using the cv2 library. It then draws a 5-pixel wide red line between two given points (y and z) on the array and returns the resulting array.",
+    "similarity_to_original_description": 10.0,
+    "names_removed": "\ndef x(y, z):\n  import cv2\n  x = np.zeros((512, 512, 3), np.uint8)\n  cv2.line(x, y, z, (255,0, 0), 5)\n  return x",
+    "quality": 80.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(start, end):\n  import cv2 \n  img = np.zeros((512, 512, 3), np.uint8) \n  cv2.line(img, start, end, (255, 0, 0), 5) \n  cv2.imshow(\"image\", img) \n  cv2.waitKey(0) \n  cv2.destroyAllWindows() \n\nmy_function((100, 100), (250, 250))",
+    "description_of_names_removed": " This function takes two coordinates (y and z) as input and uses the OpenCV library to draw a line between them on a 512x512 pixel image. The line is 5 pixels thick and is colored blue. The image is then displayed and can be exited by pressing any key.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y, z):\n  import cv2 \n  img = np.zeros((512, 512, 3), np.uint8) \n  cv2.line(img, y, z, (255, 0, 0), 5) \n  cv2.imshow(\"image\", img) \n  cv2.waitKey(0) \n  cv2.destroyAllWindows() \n\nx((100, 100), (250, 250))",
+    "quality": 80.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(start_point, end_point):\n    import cv2\n    img = np.zeros((512, 512, 3), np.uint8)\n    cv2.line(img, start_point, end_point, (255, 0, 0), 5)\n    return img",
+    "description_of_names_removed": " This function creates a 512 by 512 3-channel image with a blue line of thickness 5, extending from the coordinates y to z.",
+    "similarity_to_original_description": 80.0,
+    "names_removed": "\ndef x(y, z):\n    import cv2\n    x = np.zeros((512, 512, 3), np.uint8)\n    cv2.line(x, y, z, (255, 0, 0), 5)\n    return x",
+    "quality": 75.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(start, end):\n    #import OpenCV\n    import cv2\n    #read the image\n    img = cv2.imread(\"image.jpg\")\n    #draw the line \n    cv2.line(img, start, end, (0,255,0),3)\n    #display the image\n    cv2.imshow(\"image\",img)\n    #wait for a key press\n    cv2.waitKey(0)\n    #close the window\n    cv2.destroyAllWindows()",
+    "description_of_names_removed": " The function takes two arguments, y and z, imports the openCV library, reads an image from file, draws a line from point y to point z with a green color and a width of 3 pixels, displays the image, waits for a key press and destroys all windows once the key is pressed.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y, z):\n    import cv2\n    img = cv2.imread(\"image.jpg\")\n    cv2.line(img, y, z, (0,255,0),3)\n    cv2.imshow(\"image\",img)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()",
+    "quality": 70.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(start, end):\n    import cv2 \n    img = np.zeros((512, 512, 3), np.uint8)\n    cv2.line(img, start, end, (0,255,0), 5)\n    cv2.imshow('Line', img)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()\n    \nmy_function((100,100), (400,400))",
+    "description_of_names_removed": " This function creates a 512x512 black image and draws a green line from the coordinates (100, 100) to the coordinates (400, 400). It then displays the image in a window and waits for the user to press any key to close the window.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": " \ndef x(y, z):\n    import cv2 \n    img = np.zeros((512, 512, 3), np.uint8)\n    cv2.line(img, y, z, (0,255,0), 5)\n    cv2.imshow('Line', img)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()\n    \nx((100,100), (400,400))",
+    "quality": 70.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(start, end):\n    import cv2\n    line = cv2.line(start, end, (255, 0, 0), 10)\n    return line",
+    "description_of_names_removed": " This function takes in two arguments, y and z, imports the cv2 library, then generates a line on the y argument according to the z argument, with a blue color and a thickness of 10. The function then returns the generated line.",
+    "similarity_to_original_description": 80.0,
+    "names_removed": " \ndef x(y, z):\n    import cv2\n    x = cv2.line(y, z, (255, 0, 0), 10)\n    return x",
+    "quality": 70.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(start,end):\n    import cv2\n    img = np.zeros((512,512,3), np.uint8)\n    cv2.line(img,start,end,(0,255,0),3)\n    cv2.imshow('image',img)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()\n\n# call the function with some points\nmy_function((0,0), (100,100))",
+    "description_of_names_removed": " This function takes two points (y,z) as arguments and creates an image of 512x512 pixels with a green line drawn between those two points. It then displays the image and waits for the user to press any key before closing the window.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y,z):\n    import cv2\n    x = np.zeros((512,512,3), np.uint8)\n    cv2.line(x,y,z,(0,255,0),3)\n    cv2.imshow('x',x)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()\n\n# call the function with some points\nx((0,0), (100,100))",
+    "quality": 75.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(start_point, end_point):\n    # import opencv library\n    import cv2\n\n    # create an image\n    img = np.zeros((512,512,3), np.uint8)\n\n    # draw a line\n    cv2.line(img, start_point, end_point, (255,0,0), 5)\n\n    # show the image\n    cv2.imshow(\"Image\", img)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()\n\n# call the function\nstart_point = (0,0)\nend_point = (511,511)\nmy_function(start_point, end_point)",
+    "description_of_names_removed": " This function creates an image of size 512 by 512 and draws a line from the point (0, 0) to the point (511, 511) with a thickness of 5 and a color of blue. The image is then displayed and a key must be pressed before the window can be closed.",
+    "similarity_to_original_description": 90.0,
+    "names_removed": "\ndef x(y, z):\n    import cv2\n    img = np.zeros((512,512,3), np.uint8)\n    cv2.line(img, y, z, (255,0,0), 5)\n    cv2.imshow(\"Image\", img)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()\nstart_point = (0,0)\nend_point = (511,511)\nx(start_point, end_point)",
+    "quality": 40.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(start_point, end_point):\n    import cv2\n    img_blank = np.zeros((512,512,3), np.uint8) # create a blank image\n    cv2.line(img_blank, start_point, end_point, (0,255,0), 5) # draw a line of width 5 \n    cv2.imshow('image', img_blank)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()",
+    "description_of_names_removed": " This function creates a 512x512 pixel image containing a line with a width of 5 pixels, starting at the point specified by the 'y' parameter and ending at the point specified by the 'z' parameter. The line is drawn in green. The image is then displayed on the screen and remains until the user presses any key.",
+    "similarity_to_original_description": 80.0,
+    "names_removed": "\ndef x(y, z):\n    import cv2\n    x = np.zeros((512,512,3), np.uint8)\n    cv2.line(x, y, z, (0,255,0), 5)\n    cv2.imshow('x', x)\n    cv2.waitKey(0)\n    cv2.destroyAllWindows()",
+    "quality": 70.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(start, end):\n    img = np.zeros((512, 512, 3), np.uint8)\n    cv2.line(img, start, end, (0, 255, 0), 3)\n    return img",
+    "description_of_names_removed": " This function takes two parameters, y and z, which are coordinates. It creates a 512x512x3 array of zeros and draws a line with green color and thickness of 3 pixels between the coordinates y and z. The function then returns this array.",
+    "similarity_to_original_description": 80.0,
+    "names_removed": "\ndef x(y, z):\n    x = np.zeros((512, 512, 3), np.uint8)\n    cv2.line(x, y, z, (0, 255, 0), 3)\n    return x",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  }
+]
+Top 3 samples:
+Top Sample 1
+Code: def my_function(start, end):
+    img = np.zeros((512, 512, 3), np.uint8)
+    cv2.line(img, start, end, (0, 255, 0), 3)
+    return img
+Description of names removed:  This function takes two parameters, y and z, which are coordinates. It creates a 512x512x3 array of zeros and draws a line with green color and thickness of 3 pixels between the coordinates y and z. The function then returns this array.
+Similarity to original description: 80.0
+Quality: 90.0
+Has bugs: 0.0
+Total score: 80.0
+
+
+
+
+Top Sample 2
+Code: def my_function(start_point, end_point):
+    import cv2
+    img = np.zeros((512, 512, 3), np.uint8)
+    cv2.line(img, start_point, end_point, (255, 0, 0), 5)
+    return img
+Description of names removed:  This function creates a 512 by 512 3-channel image with a blue line of thickness 5, extending from the coordinates y to z.
+Similarity to original description: 80.0
+Quality: 75.0
+Has bugs: 0.0
+Total score: 75.0
+
+
+
+
+Top Sample 3
+Code: def my_function(start,end):
+    import cv2
+    img = np.zeros((512,512,3), np.uint8)
+    cv2.line(img,start,end,(0,255,0),3)
+    cv2.imshow('image',img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+# call the function with some points
+my_function((0,0), (100,100))
+Description of names removed:  This function takes two points (y,z) as arguments and creates an image of 512x512 pixels with a green line drawn between those two points. It then displays the image and waits for the user to press any key before closing the window.
+Similarity to original description: 100.0
+Quality: 75.0
+Has bugs: 0.0
+Total score: 75.0
+

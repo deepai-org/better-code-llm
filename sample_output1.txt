@@ -1,0 +1,209 @@
+wrote some code
+code is parsable
+removed names
+got quality rating: 90.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 0.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 95.0
+has bugs: 5.0
+wrote a description
+similarity to original description: 100.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 90.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 0.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 90.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 100.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 90.0
+has bugs: 10.0
+wrote a description
+similarity to original description: 0.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 90.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 100.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 95.0
+has bugs: 10.0
+wrote a description
+similarity to original description: 70.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 95.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 0.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 85.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 0.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 90.0
+has bugs: 10.0
+wrote a description
+similarity to original description: 0.0
+[
+  {
+    "code": "def my_function(number_of_points):\n  x_y_list = []\n  for i in range(number_of_points):\n    x = math.cos(2*math.pi*i/number_of_points)\n    y = math.sin(2*math.pi*i/number_of_points)\n    x_y_list.append((x, y))\n  return x_y_list\n  \n#print(my_function(5))\n# Output: [(1.0, 0.0), (0.3090169943749474, 0.9510565162951535), (-0.8090169943749475, 0.5877852522924731), (-0.8090169943749473, -0.587785252292473), (0.3090169943749476, -0.9510565162951536)]",
+    "description_of_names_removed": " This function takes in the parameter y and creates a list, z. It then uses a for loop to iterate through the range of y and calculates the cosine and sine of 2 times pi times the current iteration divided by y. Finally, it appends the calculated cosine and sine as a tuple to the list, z, and returns it.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n  z = []\n  for i in range(y):\n    a = math.cos(2*math.pi*i/y)\n    b = math.sin(2*math.pi*i/y)\n    z.append((a, b))\n  return z",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(n): \n  points = []\n  for i in range(n): \n    x = math.cos(2 * math.pi * i / n) \n    y = math.sin(2 * math.pi * i / n) \n    points.append((x, y)) \n  return points \n\nmy_function(n)",
+    "description_of_names_removed": " This function takes a parameter 'y' and returns a list containing tuples of the cosine and sine of 2 * pi * i / y, where i is a number from 0 to the value of y.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y): \n  z = []\n  for i in range(y): \n    a = math.cos(2 * math.pi * i / y) \n    b = math.sin(2 * math.pi * i / y) \n    z.append((a, b)) \n  return z",
+    "quality": 95.0,
+    "has_bugs": 5.0
+  },
+  {
+    "code": "def my_function(n):\n    # create a list to store x-y points\n    points = []\n    # define the radius of the circle\n    r = 1\n    # set the initial angle\n    angle = 0\n    # loop through the number of points\n    for i in range(n):\n        # calculate x and y points using trigonometry\n        x = r * math.cos(angle)\n        y = r * math.sin(angle)\n        # increment the angle by 2*pi/n\n        angle += (2*math.pi)/n\n        # append the points to the list\n        points.append((x,y))\n    # return the list\n    return points",
+    "description_of_names_removed": " This function takes in a number 'y', and creates a list 'z'. It then assigns two variables 'a' and 'b' respectively with values 1 and 0. For each number 'c' in the range of 'y', it calculates a new value 'd' and 'e' using the cosine and sine functions of 'b' (which is being incremented by (2*pi)/y) respectively, and adds a tuple of 'd' and 'e' to 'z'. Finally, the list of tuples 'z' is returned.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n    z = []\n    a = 1\n    b = 0\n    for c in range(y):\n        d = a * math.cos(b)\n        e = a * math.sin(b)\n        b += (2*math.pi)/y\n        z.append((d,e))\n    return z",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(number_of_points):\n    my_list = []\n    for i in range(number_of_points):\n        x = math.cos(2*math.pi*i/number_of_points)\n        y = math.sin(2*math.pi*i/number_of_points)\n        my_list.append((x,y))\n    return my_list\n\nprint(my_function(10))",
+    "description_of_names_removed": " This function takes in a parameter 'y' and creates a list with 'y' number of coordinates (a,b). The coordinates are calculated by taking the cosine and sine of 2\u03c0i/y, where i is a number between 0 and 'y'-1. The list of coordinates is then returned.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\n\ndef x(y):\n    z = []\n    for i in range(y):\n        a = math.cos(2*math.pi*i/y)\n        b = math.sin(2*math.pi*i/y)\n        z.append((a,b))\n    return z\n\nprint(x(10))",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(number):\n  points = []\n  for i in range(number):\n    x = math.cos(2 * math.pi * i / number)\n    y = math.sin(2 * math.pi * i / number)\n    points.append((x, y))\n  return points",
+    "description_of_names_removed": " This function takes in the parameter y, which is a number. It creates an empty list called z. It then uses a for loop to loop through a range of numbers starting from 0 to the number y. Inside the loop, it calculates the cosine and sine of multiples of 2\u03c0 and divides it by y. It then adds the resulting cosine and sine as a tuple to the list z. Finally, it returns the list z.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n  z = []\n  for i in range(y):\n    a = math.cos(2 * math.pi * i / y)\n    b = math.sin(2 * math.pi * i / y)\n    z.append((a, b))\n  return z",
+    "quality": 90.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(num):\n    points = []\n    for i in range(num):\n        x = round(math.cos(2*math.pi*i/num),2)\n        y = round(math.sin(2*math.pi*i/num),2)\n        points.append((x,y))\n    return points\n\nprint(my_function(5)) # example output: [(1.0, 0.0), (0.0, 1.0), (-1.0, 0.0), (0.0, -1.0), (1.0, 0.0)]",
+    "description_of_names_removed": " This function takes in an integer 'y' as an argument, and creates a list 'z', which is populated with tuples. Each tuple contains two numbers, rounded to two decimal places, which are calculated by taking the cosine and sine of the value 'i' divided by 'y'. The value of 'i' ranges from 0 to 'y-1' in increments of 1. The function then returns 'z'.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n    z = []\n    for i in range(y):\n        a = round(math.cos(2*math.pi*i/y),2)\n        b = round(math.sin(2*math.pi*i/y),2)\n        z.append((a,b))\n    return z\n\nprint(x(5))",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(n):\n  xPoints, yPoints = [], []\n  for i in range(n):\n    angle = 2 * math.pi * i / n\n    xPoints.append(math.cos(angle))\n    yPoints.append(math.sin(angle))\n  return xPoints, yPoints",
+    "description_of_names_removed": " This function takes an integer y as its argument and returns two lists, a and b. It iterates over a range from 0 to y, and for each value, z, in the range it calculates a float c equal to 2 multiplied by pi multiplied by z divided by y. It then appends the cosine of c to the list a and the sine of c to the list b. Finally, it returns the two lists, a and b.",
+    "similarity_to_original_description": 70.0,
+    "names_removed": "\n\ndef x(y):\n  a, b = [], []\n  for z in range(y):\n    c = 2 * math.pi * z / y\n    a.append(math.cos(c))\n    b.append(math.sin(c))\n  return a, b",
+    "quality": 95.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(n):\n  points = []\n  for i in range(n):\n    theta = 2 * math.pi * i / n\n    x = math.cos(theta)\n    y = math.sin(theta)\n    points.append((x, y))\n  return points",
+    "description_of_names_removed": " This function takes an input 'y' and creates an empty list. It then iterates through a range of 'y' and calculates the cosine and sine of a number (determined by the iteration) multiplied by two times pi. The cosine and sine values are added to the list as a tuple and the list is returned.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\n\ndef x(y):\n  z = []\n  for i in range(y):\n    a = 2 * math.pi * i / y\n    b = math.cos(a)\n    c = math.sin(a)\n    z.append((b, c))\n  return z",
+    "quality": 95.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(n): \n  points = []\n  for i in range(n): \n    x = math.cos(2 * math.pi * i/n) \n    y = math.sin(2 * math.pi * i/n) \n    points.append((x,y))  \n  return points \n  \nprint(my_function(10))",
+    "description_of_names_removed": " This function takes in a number 'y' as an argument and uses it to create a list of tuples containing the cosine and sine values for each integer between 0 and 'y'. The function then returns this list of tuples.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y): \n  z = []\n  for i in range(y): \n    a = math.cos(2 * math.pi * i/y) \n    b = math.sin(2 * math.pi * i/y) \n    z.append((a,b))  \n  return z \n  \nprint(x(10))",
+    "quality": 85.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(num_points):\n  x_y_points = []\n  for i in range(num_points):\n    x = math.cos(2*math.pi*i/num_points)\n    y = math.sin(2*math.pi*i/num_points)\n    x_y_points.append([x,y])\n  return x_y_points",
+    "description_of_names_removed": " This function takes in a number y as an argument and creates a list z. It then uses a for loop to iterate through the range of y and calculates the cosine and sine of each iteration, storing the results in a list. This list is then returned.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\n\ndef x(y):\n  z = []\n  for i in range(y):\n    a = math.cos(2*math.pi*i/y)\n    b = math.sin(2*math.pi*i/y)\n    z.append([a,b])\n  return z",
+    "quality": 90.0,
+    "has_bugs": 10.0
+  }
+]
+Top 3 samples:
+Top Sample 1
+Code: def my_function(n):
+  points = []
+  for i in range(n):
+    x = math.cos(2 * math.pi * i / n)
+    y = math.sin(2 * math.pi * i / n)
+    points.append((x, y))
+  return points
+
+my_function(n)
+Description of names removed:  This function takes a parameter 'y' and returns a list containing tuples of the cosine and sine of 2 * pi * i / y, where i is a number from 0 to the value of y.
+Similarity to original description: 100.0
+Quality: 95.0
+Has bugs: 5.0
+Total score: 90.0
+
+
+
+
+Top Sample 2
+Code: def my_function(number_of_points):
+    my_list = []
+    for i in range(number_of_points):
+        x = math.cos(2*math.pi*i/number_of_points)
+        y = math.sin(2*math.pi*i/number_of_points)
+        my_list.append((x,y))
+    return my_list
+
+print(my_function(10))
+Description of names removed:  This function takes in a parameter 'y' and creates a list with 'y' number of coordinates (a,b). The coordinates are calculated by taking the cosine and sine of 2πi/y, where i is a number between 0 and 'y'-1. The list of coordinates is then returned.
+Similarity to original description: 100.0
+Quality: 90.0
+Has bugs: 0.0
+Total score: 90.0
+
+
+
+
+Top Sample 3
+Code: def my_function(num):
+    points = []
+    for i in range(num):
+        x = round(math.cos(2*math.pi*i/num),2)
+        y = round(math.sin(2*math.pi*i/num),2)
+        points.append((x,y))
+    return points
+
+print(my_function(5)) # example output: [(1.0, 0.0), (0.0, 1.0), (-1.0, 0.0), (0.0, -1.0), (1.0, 0.0)]
+Description of names removed:  This function takes in an integer 'y' as an argument, and creates a list 'z', which is populated with tuples. Each tuple contains two numbers, rounded to two decimal places, which are calculated by taking the cosine and sine of the value 'i' divided by 'y'. The value of 'i' ranges from 0 to 'y-1' in increments of 1. The function then returns 'z'.
+Similarity to original description: 100.0
+Quality: 90.0
+Has bugs: 0.0
+Total score: 90.0
+
+
+

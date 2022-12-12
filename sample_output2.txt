@@ -1,0 +1,211 @@
+
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+removed names
+removed names
+got quality rating: 80.0
+removed names
+got quality rating: 80.0
+has bugs: 20.0
+got quality rating: 90.0
+removed names
+has bugs: 10.0
+removed names
+removed names
+has bugs: 0.0
+got quality rating: 90.0
+got quality rating: 95.0
+got quality rating: 80.0
+has bugs: 0.0
+has bugs: 0.0
+removed names
+has bugs: 0.0
+removed names
+got quality rating: 90.0
+removed names
+got quality rating: 90.0
+has bugs: 0.0
+got quality rating: 80.0
+has bugs: 0.0
+wrote some code
+code is parsable
+has bugs: 0.0
+wrote a description
+wrote a description
+similarity to original description: 100.0
+similarity to original description: 100.0
+wrote a description
+wrote a description
+wrote a description
+similarity to original description: 100.0
+similarity to original description: 100.0
+similarity to original description: 100.0
+wrote a description
+wrote a description
+similarity to original description: 100.0
+similarity to original description: 100.0
+removed names
+wrote a description
+could not convert string to float: ' 95/100'
+Retrying get_code_quality_rating...
+similarity to original description: 0.0
+could not convert string to float: ' 95/100'
+Retrying get_code_quality_rating...
+wrote a description
+similarity to original description: 0.0
+got quality rating: 95.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 0.0
+[
+  {
+    "code": "def my_function(radius):\n  points = []\n  for angle in [i * (2 * math.pi) / 8 for i in range(8)]:\n    x = math.cos(angle) * radius\n    y = math.sin(angle) * radius\n    points.append((x, y))\n  return points",
+    "description_of_names_removed": " This function takes in a number y as an argument and creates a list of 8 tuples, each tuple containing two numbers. The two numbers in the tuple correspond to the coordinates of the points on a circle with a radius of y. The circle is divided into 8 equal parts. The function returns the list of tuples.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n  z = []\n  for a in [i * (2 * math.pi) / 8 for i in range(8)]:\n    b = math.cos(a) * y\n    c = math.sin(a) * y\n    z.append((b, c))\n  return z",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(radius):\n    coords = []\n    for angle in range(0, 360, 45):\n        x = radius * math.cos(angle)\n        y = radius * math.sin(angle)\n        coords.append([x, y])\n    return coords\n\nprint(my_function(5))",
+    "description_of_names_removed": " This function takes in a number (y) and returns a list of lists containing the x and y coordinates of points located at a distance of y from the origin, at angles of 0\u00b0, 45\u00b0, 90\u00b0, 135\u00b0, 180\u00b0, 225\u00b0, 270\u00b0 and 315\u00b0.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\n\ndef x(y):\n    z = []\n    for a in range(0, 360, 45):\n        b = y * math.cos(a)\n        c = y * math.sin(a)\n        z.append([b, c])\n    return z\n\nprint(x(5))",
+    "quality": 80.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(radius):\n  points = []\n  for i in range(0, 8):\n    x_coordinate = radius * cos(i * (2*pi)/8)\n    y_coordinate = radius * sin(i * (2*pi)/8)\n    points.append([x_coordinate, y_coordinate])\n  return points\n\nprint(my_function(5))",
+    "description_of_names_removed": " This function takes a number y as an input and returns a list of 8 tuples representing the coordinates of the points on a circle with a radius of y. The coordinates are calculated by multiplying y with the cosine and sine of angles that range from 0 to 2\u03c0 in 8 equal steps.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n  z = []\n  for i in range(0, 8):\n    a = y * cos(i * (2*pi)/8)\n    b = y * sin(i * (2*pi)/8)\n    z.append([a, b])\n  return z\n\nprint(x(5))",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(radius):\n    octagon = []\n    for angle in range(0, 360, 45):\n        x = radius * math.cos(math.radians(angle))\n        y = radius * math.sin(math.radians(angle))\n        octagon.append((x, y))\n    return octagon\n\nprint(my_function(5))",
+    "description_of_names_removed": " This function takes an argument 'y' and creates a list 'z'. It loops through the range 0-360 with a step size of 45 and for each value in the range calculates two values; one value is the cosine of the angle times the argument 'y', the other value is the sine of the angle times the argument 'y'. It then appends the two values to the list 'z' before returning the updated list. When this function is called with an argument of '5', it will return a list of 8 tuples of two numbers each.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n    z = []\n    for a in range(0, 360, 45):\n        b = y * math.cos(math.radians(a))\n        c = y * math.sin(math.radians(a))\n        z.append((b, c))\n    return z\n\nprint(x(5))",
+    "quality": 80.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(radius):\n    # create empty list \n    points = []\n    # set angle\n    angle = 0\n    # loop 8 times\n    for _ in range(8):\n        # calculate x and y using the radius and angle\n        x = radius * math.cos(angle)\n        y = radius * math.sin(angle)\n        # append x and y to the list \n        points.append([x, y])\n        # increment the angle\n        angle += 2*math.pi/8\n    # return the list\n    return points",
+    "description_of_names_removed": " This function takes a number (y) as an argument and returns a list of 8 coordinate pairs. The coordinate pairs are calculated by multiplying y by the cosine and sine of a value that increases in steps of 2*pi/8.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n    z = []\n    a = 0\n    for _ in range(8):\n        b = y * math.cos(a)\n        c = y * math.sin(a)\n        z.append([b, c])\n        a += 2*math.pi/8\n    return z",
+    "quality": 80.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(radius):\n  points = []\n  for angle in range(0, 360, 45):\n    x = radius * math.cos(math.radians(angle))\n    y = radius * math.sin(math.radians(angle))\n    points.append((x, y))\n  return points\n  \noctagon_points = my_function(radius)",
+    "description_of_names_removed": " This function takes in a radius and returns a list of points that make up the corners of an octagon with the given radius. The points are calculated by multiplying the radius by the cosine and sine of the angles between 0 and 360 degrees, incremented in 45 degree intervals.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n  z = []\n  for a in range(0, 360, 45):\n    b = y * math.cos(math.radians(a))\n    c = y * math.sin(math.radians(a))\n    z.append((b, c))\n  return z\n\noctagon_points = x(radius)",
+    "quality": 95.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(r):\n  points = []\n  for i in range(8): \n    x = r * math.cos(2 * math.pi * i / 8)\n    y = r * math.sin(2 * math.pi * i / 8)\n    points.append([x,y])\n  return points\n\nprint(my_function(10))\n# Output: [[10.0, 0.0], [7.0710678118654755, 7.071067811865475], [1.2246467991473532e-16, 10.0], [-7.071067811865475, 7.071067811865476], [-10.0, 1.2246467991473532e-16], [-7.071067811865477, -7.071067811865475], [1.8369701987210297e-16, -10.0], [7.071067811865475, -7.071067811865477]]",
+    "description_of_names_removed": " This function takes in a number 'y' and creates an empty list 'z'. It then uses a for loop to iterate over a range of 8 numbers, calculates the cosine and sine of the current number, multiplies it with the input 'y' and then appends the result to the empty list 'z'. Finally, it returns the list 'z' which contains the cosine and sine values of the 8 numbers multiplied with the input 'y'.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n  z = []\n  for i in range(8): \n    a = y * math.cos(2 * math.pi * i / 8)\n    b = y * math.sin(2 * math.pi * i / 8)\n    z.append([a,b])\n  return z\n\nprint(x(10))",
+    "quality": 95.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(radius):\n  points = []\n  x_center = 0\n  y_center = 0\n  for i in range(8):\n    theta = i * 2 * 3.14 / 8\n    x = x_center + (radius * math.cos(theta))\n    y = y_center + (radius * math.sin(theta))\n    points.append((x, y))\n  return points\n  \nprint(my_function(5))",
+    "description_of_names_removed": " This function takes an input of 'y' and creates a list 'z'. It then creates two variables 'a' and 'b' which are set to 0 and loops 8 times. The loop assigns the variable 'd' to the calculated value of 'c' multiplied by 2 multiplied by 3.14 divided by 8. It then assigns the variable 'e' to the sum of 'a' and 'y' multiplied by the cosine of 'd'. The variable 'f' is assigned the sum of 'b' and 'y' multiplied by the sine of 'd'. Finally, the list 'z' is appended with the calculated values of (e, f) and the function returns the list 'z'. When the function is called with an input of 5, it will return a list of (x, y) coordinate values.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n  z = []\n  a = 0\n  b = 0\n  for c in range(8):\n    d = c * 2 * 3.14 / 8\n    e = a + (y * math.cos(d))\n    f = b + (y * math.sin(d))\n    z.append((e, f))\n  return z\n  \nprint(x(5))",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(radius):\n    octagon_points = []\n    for i in range(8):\n        theta = i*(2*math.pi/8)\n        x = radius * math.cos(theta)\n        y = radius * math.sin(theta)\n        octagon_points.append((x, y))\n    return octagon_points\n\npoints = my_function(5)\nprint(points)",
+    "description_of_names_removed": " This function takes an argument \"y\" and creates a list of 8 coordinates (x,y). The coordinates are created by multiplying \"y\" with the cosine and sine of i multiplied by 2\u03c0/8, where i goes from 0 to 7. The function then returns the list of coordinates.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n    z = []\n    for i in range(8):\n        a = i*(2*math.pi/8)\n        b = y * math.cos(a)\n        c = y * math.sin(a)\n        z.append((b, c))\n    return z\n\npoints = x(5)\nprint(points)",
+    "quality": 90.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(radius):\n    angle = 0\n    for i in range(8):\n        x = radius * math.cos(angle)\n        y = radius * math.sin(angle)\n        print(x,y)\n        angle += math.pi/4\n\nmy_function(radius)",
+    "description_of_names_removed": " The function x takes the value of y as an argument and prints out 8 pairs of values. The first value of each pair is calculated using the equation y * math.cos(z). The second value of each pair is calculated using the equation y * math.sin(z). The value of z is increased by math.pi/4 after each pair is printed out.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": " \ndef x(y):\n    z = 0\n    for i in range(8):\n        a = y * math.cos(z)\n        b = y * math.sin(z)\n        print(a,b)\n        z += math.pi/4\n\nx(y)",
+    "quality": 80.0,
+    "has_bugs": 20.0
+  }
+]
+Top 3 samples:
+Top Sample 1
+Code: def my_function(radius):
+  points = []
+  for angle in range(0, 360, 45):
+    x = radius * math.cos(math.radians(angle))
+    y = radius * math.sin(math.radians(angle))
+    points.append((x, y))
+  return points
+
+octagon_points = my_function(radius)
+Description of names removed:  This function takes in a radius and returns a list of points that make up the corners of an octagon with the given radius. The points are calculated by multiplying the radius by the cosine and sine of the angles between 0 and 360 degrees, incremented in 45 degree intervals.
+Similarity to original description: 100.0
+Quality: 95.0
+Has bugs: 0.0
+Total score: 95.0
+
+
+
+
+Top Sample 2
+Code: def my_function(radius):
+  points = []
+  for angle in [i * (2 * math.pi) / 8 for i in range(8)]:
+    x = math.cos(angle) * radius
+    y = math.sin(angle) * radius
+    points.append((x, y))
+  return points
+Description of names removed:  This function takes in a number y as an argument and creates a list of 8 tuples, each tuple containing two numbers. The two numbers in the tuple correspond to the coordinates of the points on a circle with a radius of y. The circle is divided into 8 equal parts. The function returns the list of tuples.
+Similarity to original description: 100.0
+Quality: 90.0
+Has bugs: 0.0
+Total score: 90.0
+
+
+
+
+Top Sample 3
+Code: def my_function(radius):
+  points = []
+  for i in range(0, 8):
+    x_coordinate = radius * cos(i * (2*pi)/8)
+    y_coordinate = radius * sin(i * (2*pi)/8)
+    points.append([x_coordinate, y_coordinate])
+  return points
+
+print(my_function(5))
+Description of names removed:  This function takes a number y as an input and returns a list of 8 tuples representing the coordinates of the points on a circle with a radius of y. The coordinates are calculated by multiplying y with the cosine and sine of angles that range from 0 to 2π in 8 equal steps.
+Similarity to original description: 100.0
+Quality: 90.0
+Has bugs: 0.0
+Total score: 90.0
+
+
