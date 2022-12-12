@@ -140,7 +140,7 @@ def code_has_bugs(code):
 
 
 @retry
-def  v(code):
+def code_without_names(code):
     # Take code and use GPT3 to remove all variable names and other identifiers
 
     # replace all variable names with "X", "Y", "Z", etc.

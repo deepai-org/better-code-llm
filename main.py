@@ -8,7 +8,7 @@ functions = [
     'function to generate the x-y, points on a circle, given the number of points',
     'function to generate the x-y, points on a octagon, given the radius',
     'function to draw a line using opencv, given the start and end points',
-    ''
+    'function to draw a circle using opencv, given the center and radius',
 ]
 
 
@@ -64,7 +64,7 @@ def main():
     # print(result)
 
     # input_description = 'function to generate the x-y, points on a circle, given the number of points'
-    input_description = functions[2]
+    input_description = functions[3]
 
     num_samples = 10
 
