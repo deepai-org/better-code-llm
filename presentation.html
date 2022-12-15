@@ -156,6 +156,20 @@ Does it match what we wanted?
 
 ---
 
+# Models can return strange outputs
+
+* code_quality_rating() and code_has_bugs() sometimes crash
+
+* They are instructed to return a number between 0 and 100
+
+* But sometimes they will return a string like "90/100"
+
+* We can ignore invalid results and try again
+
+* But the model could also misunderstand the question while producing a valid result!
+
+---
+
 # It failed to find a bug in its own code
 
         function to get the list of docker container ids

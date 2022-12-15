@@ -11,6 +11,7 @@ functions = [
     'function to draw a circle using opencv, given the center and radius',
     'function to start a docker container that uses a gpu, given the docker image name',
     'function to get the list of docker container ids that are running and return them as a list',
+    'function to check if a docker container is running, given the container id, and if not, start a new one given the docker image name',
 ]
 
 
@@ -66,7 +67,7 @@ def main():
     # print(result)
 
     # input_description = 'function to generate the x-y, points on a circle, given the number of points'
-    input_description = functions[5]
+    input_description = functions[6]
 
     num_samples = 10
 

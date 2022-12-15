@@ -1,0 +1,211 @@
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+wrote some code
+code is parsable
+code is parsable
+removed names
+removed names
+wrote some code
+code is parsable
+got quality rating: 80.0
+got quality rating: 70.0
+has bugs: 50.0
+has bugs: 50.0
+wrote some code
+code is parsable
+removed names
+wrote a description
+got quality rating: 85.0
+removed names
+has bugs: 0.0
+similarity to original description: 0.0
+got quality rating: 80.0
+removed names
+wrote a description
+got quality rating: 75.0
+has bugs: 5.0
+similarity to original description: 75.0
+has bugs: 10.0
+wrote a description
+removed names
+got quality rating: 70.0
+similarity to original description: 100.0
+has bugs: 10.0
+wrote a description
+similarity to original description: 100.0
+wrote a description
+similarity to original description: 90.0
+wrote a description
+similarity to original description: 90.0
+removed names
+got quality rating: 80.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 100.0
+wrote some code
+code is parsable
+wrote some code
+code is not parsable
+removed names
+got quality rating: 70.0
+has bugs: 10.0
+wrote a description
+similarity to original description: 0.0
+wrote some code
+code is parsable
+removed names
+got quality rating: 75.0
+has bugs: 0.0
+wrote a description
+similarity to original description: 50.0
+[
+  {
+    "code": "def my_function(container_id, image_name):\n    # import the docker module\n    import docker\n    # create an instance of the docker client\n    client = docker.from_env()\n    # get the container object with the given container_id\n    container = client.containers.get(container_id)\n    # check if the container is running\n    if container.status == 'running':\n        print('Container is running')\n    else:\n        # start a new container with the given image name\n        container = client.containers.run(image_name)\n        print('Container started')",
+    "description_of_names_removed": " This function takes two arguments, y and z, and uses the docker library to access the container associated with the argument y. If the container is running, it prints \"Container is running\" to the console. Otherwise, it starts the container associated with the argument z and prints \"Container started\" to the console.",
+    "similarity_to_original_description": 50.0,
+    "names_removed": "\ndef x(y, z):\n    import docker\n    client = docker.from_env()\n    container = client.containers.get(y)\n    if container.status == 'running':\n        print('Container is running')\n    else:\n        container = client.containers.run(z)\n        print('Container started')",
+    "quality": 75.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(container_id, image_name):\n    import docker\n    client = docker.from_env()\n\n    container = client.containers.get(container_id)\n    if container.status == 'running':\n        print(\"container is already running\")\n    else:\n        container = client.containers.run(image_name)\n        print(\"container started\")\n\nmy_function(container_id, image_name)",
+    "description_of_names_removed": " This function takes two parameters, 'x' and 'y'. It imports docker, then gets the container with 'x' as the name, checks if it is running, and if it isn't, it runs the container with 'y' as the name and prints 'container started'.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(x, y):\n    import docker\n    x = docker.from_env()\n\n    x = x.containers.get(x)\n    if x.status == 'running':\n        print(\"container is already running\")\n    else:\n        x = x.containers.run(y)\n        print(\"container started\")\n\nx(x, y)",
+    "quality": 70.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(container_id, image_name):\n    container = docker.containers.get(container_id)\n    if container.status != 'running':\n        container = docker.containers.run(image_name)\n    return container",
+    "description_of_names_removed": " This function takes two parameters, x and y. It checks if the container with the name x is running, and if it isn't, it runs the container with the name y. Finally, the function returns the container.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(x, y):\n    x = docker.containers.get(x)\n    if x.status != 'running':\n        x = docker.containers.run(y)\n    return x",
+    "quality": 70.0,
+    "has_bugs": 50.0
+  },
+  {
+    "code": "def my_function(container_id, image_name):\n    try:\n        container_status = docker.containers.get(container_id).status\n    except:\n        container_status = \"stopped\"\n    if container_status == \"running\":\n        return \"Container is already running\"\n    else:\n        docker.containers.run(image_name)\n        return \"New container started\"",
+    "description_of_names_removed": " This function takes two parameters: x and y. It checks the status of the container with the given x parameter. If the status is \"running\" it will return the message \"Container is already running\". Otherwise, a new container will be started with the given y parameter and the message \"New container started\" is returned.",
+    "similarity_to_original_description": 90.0,
+    "names_removed": "\ndef x(x, y):\n    try:\n        x = docker.containers.get(x).status\n    except:\n        x = \"stopped\"\n    if x == \"running\":\n        return \"Container is already running\"\n    else:\n        docker.containers.run(y)\n        return \"New container started\"",
+    "quality": 80.0,
+    "has_bugs": 5.0
+  },
+  {
+    "code": "def my_function(container_id, image_name):\n    running_container = docker.containers.get(container_id)\n    if running_container is None:\n        docker.containers.run(image_name)\n    else:\n        print(\"Container is already running\")",
+    "description_of_names_removed": " This function takes two parameters, x and y. It checks if a container with the name x is already running. If it isn't, it runs a new container with the name y. If the container is already running, it prints out a message saying \"Container is already running\".",
+    "similarity_to_original_description": 75.0,
+    "names_removed": "\ndef x(x, y):\n    z = docker.containers.get(x)\n    if z is None:\n        docker.containers.run(y)\n    else:\n        print(\"Container is already running\")",
+    "quality": 80.0,
+    "has_bugs": 50.0
+  },
+  {
+    "code": "def my_function(container_id, image_name):\n  cmd = \"docker container ls\"\n  output = os.popen(cmd).read()\n  if container_id in output:\n    print(\"The container is already running\")\n  else:\n    cmd = \"docker run -d --name \"+container_id+\" \"+image_name\n    output = os.popen(cmd).read()\n    print(\"The container has been started\")\n  \nmy_function(container_id, image_name)",
+    "description_of_names_removed": " This function checks if a container with the given name (x) is already running. If it is, it prints out a message saying that the container is already running. If it is not, it runs the container with the given name (x) and image (y), and prints out a message saying that the container has been started.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef my_function(x, y):\n  cmd = \"docker container ls\"\n  output = os.popen(cmd).read()\n  if x in output:\n    print(\"The container is already running\")\n  else:\n    cmd = \"docker run -d --name \"+x+\" \"+y\n    output = os.popen(cmd).read()\n    print(\"The container has been started\")\n  \nmy_function(x, y)",
+    "quality": 75.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(container_id, image_name):\n  container_running = False\n  for container in docker.containers.list():\n    if container.id == container_id:\n      container_running = True\n  \n  if not container_running:\n    docker.containers.run(image_name)\n  else:\n    print('Container already running!')",
+    "description_of_names_removed": " This function checks if a Docker container (with the ID given in the parameter 'y') is already running. If it is not, a new Docker container is created with the given image (in the parameter 'z'). Otherwise, a message is printed that the container is already running.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y, z):\n  a = False\n  for b in docker.containers.list():\n    if b.id == y:\n      a = True\n  \n  if not a:\n    docker.containers.run(z)\n  else:\n    print('Container already running!')",
+    "quality": 85.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(container_id, image):\n    try:\n        container_state = subprocess.check_output([\"docker\",\"inspect\",\"--format='{{.State.Running}}'\",container_id])\n        if container_state == 'true':\n            return 0\n        else:\n            subprocess.call([\"docker\", \"run\", \"-d\", \"--name\", container_id, image])\n            return 0\n    except subprocess.CalledProcessError:\n        subprocess.call([\"docker\", \"run\", \"-d\", \"--name\", container_id, image])\n        return 0",
+    "description_of_names_removed": " This function checks if a docker container with the name x is running. If it is running, it returns 0. If not, it runs a new container with the name x and the image y and then returns 0.",
+    "similarity_to_original_description": 90.0,
+    "names_removed": "\ndef x(x, y):\n    try:\n        x = subprocess.check_output([\"docker\",\"inspect\",\"--format='{{.State.Running}}'\",x])\n        if x == 'true':\n            return 0\n        else:\n            subprocess.call([\"docker\", \"run\", \"-d\", \"--name\", x, y])\n            return 0\n    except subprocess.CalledProcessError:\n        subprocess.call([\"docker\", \"run\", \"-d\", \"--name\", x, y])\n        return 0",
+    "quality": 70.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(container_id, image_name):\n    # import docker library\n    import docker\n    \n    # create docker client\n    client = docker.from_env()\n    \n    # check if the container exists\n    container = client.containers.list(all=True, filters={'id': container_id})\n    \n    # if the container exists\n    if len(container) > 0:\n        # check if the container is running\n        if container[0].status == 'running':\n            print(\"Container is already running\")\n        else:\n            # if the container is not running, start it\n            container[0].start()\n            print(\"Container started\")\n    # else, create a new container and start it\n    else:\n        container = client.containers.run(image_name)\n        print(\"New container created and started\")",
+    "description_of_names_removed": " This function checks if a Docker container with the specified ID exists. If it does, the function starts the container if it is not already running. If the container does not exist, a new container is created with the specified image and started.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(x, y):\n    # import docker library\n    import docker\n    \n    # create docker client\n    z = docker.from_env()\n    \n    # check if the container exists\n    x = z.containers.list(all=True, filters={'id': x})\n    \n    # if the container exists\n    if len(x) > 0:\n        # check if the container is running\n        if x[0].status == 'running':\n            print(\"Container is already running\")\n        else:\n            # if the container is not running, start it\n            x[0].start()\n            print(\"Container started\")\n    # else, create a new container and start it\n    else:\n        x = z.containers.run(y)\n        print(\"New container created and started\")",
+    "quality": 80.0,
+    "has_bugs": 0.0
+  }
+]
+Top 3 samples:
+Top Sample 1
+Code: def my_function(container_id, image_name):
+  container_running = False
+  for container in docker.containers.list():
+    if container.id == container_id:
+      container_running = True
+
+  if not container_running:
+    docker.containers.run(image_name)
+  else:
+    print('Container already running!')
+Description of names removed:  This function checks if a Docker container (with the ID given in the parameter 'y') is already running. If it is not, a new Docker container is created with the given image (in the parameter 'z'). Otherwise, a message is printed that the container is already running.
+Similarity to original description: 100.0
+Quality: 85.0
+Has bugs: 0.0
+Total score: 85.0
+
+
+
+
+Top Sample 2
+Code: def my_function(container_id, image_name):
+    # import docker library
+    import docker
+
+    # create docker client
+    client = docker.from_env()
+
+    # check if the container exists
+    container = client.containers.list(all=True, filters={'id': container_id})
+
+    # if the container exists
+    if len(container) > 0:
+        # check if the container is running
+        if container[0].status == 'running':
+            print("Container is already running")
+        else:
+            # if the container is not running, start it
+            container[0].start()
+            print("Container started")
+    # else, create a new container and start it
+    else:
+        container = client.containers.run(image_name)
+        print("New container created and started")
+Description of names removed:  This function checks if a Docker container with the specified ID exists. If it does, the function starts the container if it is not already running. If the container does not exist, a new container is created with the specified image and started.
+Similarity to original description: 100.0
+Quality: 80.0
+Has bugs: 0.0
+Total score: 80.0
+
+
+
+
+Top Sample 3
+Code: def my_function(container_id, image_name):
+    try:
+        container_status = docker.containers.get(container_id).status
+    except:
+        container_status = "stopped"
+    if container_status == "running":
+        return "Container is already running"
+    else:
+        docker.containers.run(image_name)
+        return "New container started"
+Description of names removed:  This function takes two parameters: x and y. It checks the status of the container with the given x parameter. If the status is "running" it will return the message "Container is already running". Otherwise, a new container will be started with the given y parameter and the message "New container started" is returned.
+Similarity to original description: 90.0
+Quality: 80.0
+Has bugs: 5.0
+Total score: 75.0
+
+
