@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Extracting Better Code From LLMs</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Extracting Better Code From LLMs
+
+
+      Kevin Baragona
+      deepai.org
+---
+
+## "I write bugs.
+        Eventually the computer will write code for me and it won't have any bugs."
+
+# Has the time come?
+        not quite
+# 🐞
+---
+
+# Motivation
+
+* LLMs are powerful tools to write code
+
+* But the code they produce is not always good
+        - security holes
+        - performance issues
+        - ugly code
+        - just plain wrong
+
+* What can we do to get better code from LLMs?
+---
+
+# Hypothesis:
+
+* There are probably many ways to improve code quality generation, but *let's explore just one.*
+
+* Maybe we can use LLMs on the generated code to rate and improve their own code quality?
+
+* Let's test it.
+
+
+---
+
+
+# Building Block 1: Description -> Code
+
+    def desc_to_code(description):
+        result = gpt3(f'# Given the description of a function,
+                        write the code in python.\n{description}\n\ndef my_function')
+
+        return "def my_function" + result
+
+---
+
+# why don't we just ask GPT3 to rate the code it wrote?
+
+        ***prompt engineering intensifies***
+
+---
+
+# Building Block 2: Code -> Code Quality Score
+
+    def code_quality_rating(code):
+        result = gpt3(
+            f'Given the code of a function, give a quality,
+              clarity, cleanliness and good-engineering score.
+              Give only a single overall number score from 0-100
+              with 0 being awful and 100 being perfect.\nFunction: {code}\nScore:')
+
+        return float(result)
+
+---
+
+# Building Block 3: Code -> Buggy Code Score
+
+    def code_has_bugs(code):
+        result = gpt3(
+            f'Given the code of a function, think carefully about the safety
+              and correctness of the code. Give the likelihood that there bugs.
+              If you definitely see any bugs, write 100. If you are completely
+              sure you do not see any bugs, say 0. Give the score between 0 and 100.
+              Give only the score. \nFunction: {code}\nBug score:')
+
+        return float(result)
+
+
+---
+
+# Another idea.
+
+Does GPT3 understand what the code it wrote does?
+
+Does it match what we wanted?
+
+---
+
+# Building Block 4: Code -> Description
+
+---
+
+# Building Block 5: Code -> Code with names removed
+
+* We don't want GPT3 to cheat by looking at the names of the variables.
+
+* The intent of the code should be clear from the structure of the code and what functions are called.
+
+* So remove the names of the variables before asking GPT3 to explain what the code does.
+
+---
+
+# Building Block 6: Two Descriptions -> Similarity Score
+
+* Given the original description and the reversed description, how similar are they?
+
+* Code that is similar to the original description is more likely to be good and solve the problem.
+
+* Code that GPT3 can't explain properly is probably bad.
+
+* Code that is different from the original description is probably bad.
+
+---
+# Putting it all together
+* Given a function description...
+* Generate 10 generated code samples using GPT3
+* For each generated code sample...
+    * Rate the code quality
+    * Rate the likelihood of bugs
+    * Remove the variable names to avoid cheating
+    * Reverse the code to get a description
+    * Rate the similarity of the description to the original description
+    * Calculate a final score for the code sample
+* Return the best scoring code samples!
+
+---
+
+# Results
+
+---
+
+# It failed to find a bug in its own code
+
+        function to get the list of docker container ids
+        that are running and return them as a list
+
+    def my_function():
+        # import the subprocess module
+        import subprocess
+
+        # set up a list to capture the output of the subprocess call
+        output = []
+
+        # call the docker ps command to get a list of running containers
+        ps_call = subprocess.run(['docker', 'ps'], stdout=subprocess.PIPE,
+                                    stderr=subprocess.PIPE)
+
+        # loop through the output of subprocess
+        for line in ps_call.stdout.splitlines():
+            # split each line by a whitespace
+            columns = line.split()
+            # store the container id in the output list
+            output.append(columns[0])
+
+        # return the list of container ids
+        return output
+
+            [b'CONTAINER', b'8a45549c4a88', b'1be97890b8a7']
+
+---
+# Key Learnings
+
+* You can write code that thinks about code, and ask it questions like you would ask a human
+
+* Silly things like rating the bugginess of code are very possible
+
+* But GPT3 cannot necessarily find the bugs it wrote
+
+* Many code transformations are possible
+
+* These silly functions sometimes return completely invalid results - error handling is important
+
+* Much better results are possible than just using the LLMs directly
+
+* You'll spend all your money on GPT3 if you do this
+
+* Much of this presentation was written with a LLM
+
+# 🤔
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

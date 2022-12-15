@@ -1,0 +1,196 @@
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+wrote some code
+code is parsable
+removed names
+wrote some code
+code is parsable
+removed names
+got quality rating: 60.0
+got quality rating: 60.0
+wrote some code
+code is parsable
+removed names
+removed names
+removed names
+has bugs: 80.0
+has bugs: 0.0
+removed names
+removed names
+got quality rating: 80.0
+removed names
+got quality rating: 80.0
+got quality rating: 70.0
+got quality rating: 70.0
+has bugs: 10.0
+got quality rating: 60.0
+got quality rating: 85.0
+has bugs: 10.0
+removed names
+has bugs: 10.0
+has bugs: 50.0
+has bugs: 25.0
+has bugs: 50.0
+got quality rating: 70.0
+wrote a description
+wrote a description
+has bugs: 50.0
+similarity to original description: 50.0
+removed names
+similarity to original description: 100.0
+wrote a description
+got quality rating: 90.0
+wrote a description
+similarity to original description: 100.0
+has bugs: 10.0
+similarity to original description: 40.0
+wrote a description
+wrote a description
+wrote a description
+wrote a description
+similarity to original description: 100.0
+similarity to original description: 100.0
+could not convert string to float: ' 70. The two functions share the same purpose of running a docker container, but the function 1 is more specific and requires an image name which is not required in function 2.'
+Retrying descriptions_similarity_score...
+wrote a description
+similarity to original description: 0.0
+could not convert string to float: ' 0 - The two functions are completely different.'
+Retrying descriptions_similarity_score...
+wrote a description
+similarity to original description: 0.0
+similarity to original description: 50.0
+similarity to original description: 0.0
+[
+  {
+    "code": "def my_function(docker_image_name):\n    command = f\"docker run --gpus all {docker_image_name}\"\n    os.system(command)\n\nmy_function(\"my_docker_image\")",
+    "description_of_names_removed": " This code will run the docker image named \"my_docker_image\" using all available gpus.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n    z = f\"docker run --gpus all {y}\"\n    os.system(z)\n\nx(\"my_docker_image\")",
+    "quality": 80.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(image_name):\n    return os.system(\"docker run --gpus all {0}\".format(image_name))",
+    "description_of_names_removed": " This function runs a docker container using a given parameter (y). It runs the container on all available GPUs in the system, using the OS system command. The parameter (y) is formatted into the command.",
+    "similarity_to_original_description": 50.0,
+    "names_removed": "\ndef x(y):\n    return os.system(\"docker run --gpus all {0}\".format(y))",
+    "quality": 60.0,
+    "has_bugs": 0.0
+  },
+  {
+    "code": "def my_function(docker_image_name):\n    return os.system('docker run --gpus all -it ' + docker_image_name)\n\nmy_function('my_docker_image')",
+    "description_of_names_removed": " This function runs a Docker container using the given argument 'y' and the option '--gpus all'. The argument 'z' is passed when the function is called.",
+    "similarity_to_original_description": 50.0,
+    "names_removed": "\ndef x(y):\n    return os.system('docker run --gpus all -it ' + y)\n\nx('z')",
+    "quality": 70.0,
+    "has_bugs": 50.0
+  },
+  {
+    "code": "def my_function(docker_image):\n    return os.system(f\"docker run --gpus all {docker_image}\")\n\nmy_function(\"my_docker_image\")",
+    "description_of_names_removed": " This function runs a Docker container with \"my_docker_image\" as the image and makes use of all available GPUs.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n    return os.system(f\"docker run --gpus all {y}\")\n\nx(\"my_docker_image\")",
+    "quality": 60.0,
+    "has_bugs": 80.0
+  },
+  {
+    "code": "def my_function(image_name):\n    docker_command = \"docker run --gpus all --name my_container -it {}\".format(image_name)\n    os.system(docker_command)\n\nmy_function(\"my_docker_image\")",
+    "description_of_names_removed": " This function takes one argument, y, and runs a docker command with the argument y. The command will be named 'x' and it will use all available GPUs.",
+    "similarity_to_original_description": 40.0,
+    "names_removed": "\ndef x(y):\n    z = \"docker run --gpus all --name x -it {}\".format(y)\n    os.system(z)\n\nx(\"y\")",
+    "quality": 80.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(docker_image_name):\n  return os.system(\"docker run --runtime=nvidia -it %s\" % (docker_image_name))\n\nmy_function(\"<docker-image-name>\")",
+    "description_of_names_removed": " This code runs a Docker container with a given image name using the NVIDIA runtime. The function x takes a parameter y, which is the name of the Docker image, and runs the container with that image.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n  return os.system(\"docker run --runtime=nvidia -it %s\" % (y))\n\nx(\"<docker-image-name>\")",
+    "quality": 70.0,
+    "has_bugs": 50.0
+  },
+  {
+    "code": "def my_function(image_name):\n    command = 'docker run --gpus all -it --rm ' + image_name\n    os.system(command)\n\nmy_function('<image_name>')",
+    "description_of_names_removed": " This function runs a Docker image with the specified name <image_name>. The command used is 'docker run --gpus all -it --rm <image_name>', which runs the image and removes it from the system once it is done running.",
+    "similarity_to_original_description": 100.0,
+    "names_removed": "\ndef x(y):\n    z = 'docker run --gpus all -it --rm ' + y\n    os.system(z)\n\nx('<image_name>')",
+    "quality": 70.0,
+    "has_bugs": 10.0
+  },
+  {
+    "code": "def my_function(image_name):\n    docker_cmd = \"docker run --gpus all --name {0} {1}\".format(image_name, image_name)\n    os.system(docker_cmd)\n\nmy_function(\"my_docker_image\")",
+    "description_of_names_removed": " This function takes an argument (y) and uses it to create a string containing the command to run a docker container with the name and image of the argument. It then uses the os.system() function to execute the command. In this example, the argument is \"my_docker_image\" so it will run a docker container with the name and image \"my_docker_image\".",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n    z = \"docker run --gpus all --name {0} {1}\".format(y, y)\n    os.system(z)\n\nx(\"my_docker_image\")",
+    "quality": 85.0,
+    "has_bugs": 25.0
+  },
+  {
+    "code": "def my_function(docker_image_name):\n    cmd = 'docker run --gpus all ' + docker_image_name\n    os.system(cmd)\n    \nmy_function(docker_image_name)",
+    "description_of_names_removed": " This function takes in a parameter named y and creates a string by concatenating the string 'docker run --gpus all ' with y. This string is stored in the variable z. Then, it runs the system command stored in z using the os.system() function.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n    z = 'docker run --gpus all ' + y\n    os.system(z)\n\nx(y)",
+    "quality": 60.0,
+    "has_bugs": 50.0
+  },
+  {
+    "code": "def my_function(docker_image_name):\n    try:\n        container = docker.from_env().containers.run(docker_image_name,\n                                                    auto_remove=True,\n                                                    privileged=True,\n                                                    runtime=\"nvidia\") \n    except Exception as e:\n        print(e)",
+    "description_of_names_removed": " This function attempts to create a new container using the 'docker.from_env()' command, running the specified 'y' command with the parameters 'auto_remove' and 'privileged' set to 'True', and the parameter 'runtime' set to 'nvidia'. If an exception occurs while creating the container, the exception is printed.",
+    "similarity_to_original_description": 0.0,
+    "names_removed": "\ndef x(y):\n    try:\n        z = docker.from_env().containers.run(y,\n                                            auto_remove=True,\n                                            privileged=True,\n                                            runtime=\"nvidia\") \n    except Exception as e:\n        print(e)",
+    "quality": 90.0,
+    "has_bugs": 10.0
+  }
+]
+Top 3 samples:
+Top Sample 1
+Code: def my_function(docker_image_name):
+    command = f"docker run --gpus all {docker_image_name}"
+    os.system(command)
+
+my_function("my_docker_image")
+Description of names removed:  This code will run the docker image named "my_docker_image" using all available gpus.
+Similarity to original description: 100.0
+Quality: 80.0
+Has bugs: 10.0
+Total score: 70.0
+
+
+
+
+Top Sample 2
+Code: def my_function(image_name):
+    command = 'docker run --gpus all -it --rm ' + image_name
+    os.system(command)
+
+my_function('<image_name>')
+Description of names removed:  This function runs a Docker image with the specified name <image_name>. The command used is 'docker run --gpus all -it --rm <image_name>', which runs the image and removes it from the system once it is done running.
+Similarity to original description: 100.0
+Quality: 70.0
+Has bugs: 10.0
+Total score: 60.0
+
+
+
+
+Top Sample 3
+Code: def my_function(image_name):
+    return os.system("docker run --gpus all {0}".format(image_name))
+Description of names removed:  This function runs a docker container using a given parameter (y). It runs the container on all available GPUs in the system, using the OS system command. The parameter (y) is formatted into the command.
+Similarity to original description: 50.0
+Quality: 60.0
+Has bugs: 0.0
+Total score: 50.0
+

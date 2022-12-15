@@ -21,8 +21,8 @@ Add your openai key to a file `openai_key.txt` in the root directory.
 - If you ask GPT3 to explain the code it wrote, often it reveals the code isn't what you asked for.
 - Sometimes the model will generate a invalid response, but rarely!
 - We can write wacky new types of functions, eg:
-  - make_code_for_description(description)
-  - make_description_for_code(code)
-  - get_code_quality_rating(code)
+  - desc_to_code(description)
+  - code_to_desc(code)
+  - code_quality_rating(code)
   - code_has_bugs(code)
 

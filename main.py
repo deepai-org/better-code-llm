@@ -1,20 +1,22 @@
 import json
 from multiprocessing import Pool
 
-from helpers import make_code_for_description, make_description_for_code, descriptions_are_same, code_is_parsable, \
-    code_without_names, get_code_quality_rating, code_has_bugs, descriptions_similarity_score
+from helpers import desc_to_code, code_to_desc, descriptions_are_same, code_is_parsable, \
+    code_without_names, code_quality_rating, code_has_bugs, descriptions_similarity_score
 
 functions = [
     'function to generate the x-y, points on a circle, given the number of points',
     'function to generate the x-y, points on a octagon, given the radius',
     'function to draw a line using opencv, given the start and end points',
     'function to draw a circle using opencv, given the center and radius',
+    'function to start a docker container that uses a gpu, given the docker image name',
+    'function to get the list of docker container ids that are running and return them as a list',
 ]
 
 
 def get_one_sample(input_description):
     try:
-        code = make_code_for_description(input_description)
+        code = desc_to_code(input_description)
         print("wrote some code")
 
         if code_is_parsable(code):
@@ -23,12 +25,12 @@ def get_one_sample(input_description):
             print("removed names")
             # print("removed names:", names_removed)
 
-            quality = get_code_quality_rating(code)
+            quality = code_quality_rating(code)
             print("got quality rating:", quality)
             has_bugs = code_has_bugs(code)
             print("has bugs:", has_bugs)
 
-            description_of_names_removed = make_description_for_code(names_removed)
+            description_of_names_removed = code_to_desc(names_removed)
             print("wrote a description")
 
             # check if the description of the code without names is the same as the input description
@@ -64,7 +66,7 @@ def main():
     # print(result)
 
     # input_description = 'function to generate the x-y, points on a circle, given the number of points'
-    input_description = functions[3]
+    input_description = functions[5]
 
     num_samples = 10
 
@@ -134,11 +136,11 @@ def main():
     #
     #
     #
-    # code = make_code_for_description(input_description)
+    # code = desc_to_code(input_description)
     # print("Made code:")
     # print(code)
     #
-    # new_description = make_description_for_code(code)
+    # new_description = code_to_desc(code)
     # print("Made description:")
     # print(new_description)
     #
@@ -147,12 +149,12 @@ def main():
     # print(same)
     #
     # # now generate code again from the new description
-    # code = make_code_for_description(new_description)
+    # code = desc_to_code(new_description)
     # print("Made code:")
     # print(code)
     #
     # # now generate description again from the new code
-    # new_new_description = make_description_for_code(code)
+    # new_new_description = code_to_desc(code)
     # print("Made description:")
     # print(new_new_description)
     #
