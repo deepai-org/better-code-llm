@@ -26,6 +26,8 @@ class: center, middle
 
       Kevin Baragona
       deepai.org
+
+      github.com/deepai-org/better-code-llm
 ---
 
 ## "I write bugs.
@@ -115,9 +117,23 @@ Does it match what we wanted?
 
 # Building Block 4: Code -> Description
 
+    def code_to_desc(code):
+        result = gpt3(
+            f'# Given the code of a function, write the description in natural language.
+                {code}\n\n# Explanation of the code:\n#')
+
+        return result
+
 ---
 
 # Building Block 5: Code -> Code with names removed
+    def code_without_names(code):
+        result = gpt3(
+            f'Given the code of a function, remove all variable names and other identifiers,
+              replacing them with x, y, z etc.. The code should still be valid.
+              Give only the code.\nFunction: {code}\nCode without names:')
+        return result
+
 
 * We don't want GPT3 to cheat by looking at the names of the variables.
 
@@ -137,6 +153,20 @@ Does it match what we wanted?
 
 * Code that is different from the original description is probably bad.
 
+
+    def descriptions_similarity_score(description1, description2):
+        result = gpt3(
+            f'Given two descriptions of functions, write the likelihood that they
+              perform the identical task or operation. Give only the score
+              from 0 to 100, with 0 being completely different
+              and 100 being identical operations.
+              Function 1: {description1}\nFunction 2: {description2}\nScore:')
+
+        return float(result)
+
+
+
+
 ---
 # Putting it all together
 * Given a function description...
@@ -153,6 +183,58 @@ Does it match what we wanted?
 ---
 
 # Results
+
+    Input: function to generate the x-y, points on a circle, given the number of points
+
+    Top Sample 1
+
+    Code: def my_function(n):
+      points = []
+      for i in range(n):
+        x = math.cos(2 * math.pi * i / n)
+        y = math.sin(2 * math.pi * i / n)
+        points.append((x, y))
+      return points
+
+    my_function(n)
+    Description of names removed:  This function takes a parameter 'y'
+        and returns a list containing tuples of the cosine and
+        sine of 2 * pi * i / y, where i is a number from 0 to the value of y.
+    Similarity to original description: 100.0
+    Quality: 95.0
+    Has bugs: 5.0
+    Total score: 90.0
+
+---
+
+    Input: function to get the area and thickness of a polygon represented as a list of x-y points
+
+    Top Sample 1
+    Code:
+    def my_function(points):
+      area = 0
+      thickness = 0
+      for i in range(len(points)):
+        j = (i + 1) % len(points)
+        area += points[i][0] * points[j][1]
+        area -= points[j][0] * points[i][1]
+        thickness += abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1])
+      return abs(area / 2), thickness / len(points)
+
+    # Test
+    points = [[0, 0], [2, 0], [2, 2], [0, 2]]
+    print(my_function(points)) # Output: (4.0, 4.0)
+    Description of names removed:  The function x takes a list of points, each of which
+        is a list containing two numbers, as an argument and returns a tuple containing
+        the area of the polygon formed by connecting the points in the list and the
+        average perimeter of the polygon.
+    Similarity to original description: 100.0
+    Quality: 95.0
+    Has bugs: 0.0
+    Total score: 95.0
+
+
+
 
 ---
 
@@ -215,7 +297,7 @@ Does it match what we wanted?
 
 * You'll spend all your money on GPT3 if you do this
 
-* Much of this presentation was written with a LLM
+* Much of this presentation was written by a LLM
 
 # 🤔
 

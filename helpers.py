@@ -66,9 +66,8 @@ def descriptions_are_same(description1, description2):
     elif "NO" in one_word_answer:
         return False
     else:
-        raise Exception(f"Unexpected answer: {one_word_answer}")
+        raise Exception(f"Unexpected answer: {result}")
 
-    # return result
 
 
 @retry
@@ -83,19 +82,6 @@ def descriptions_similarity_score(description1, description2):
 
 @retry
 def code_to_desc(code):
-    '''
-    Given the code of a function, write the description in natural language.
-    def generate_points_on_circle(num_points):
-        points = []
-        for i in range(num_points):
-            angle = 2 * math.pi * i / num_points
-            x = math.cos(angle)
-            y = math.sin(angle)
-            points.append((x, y))
-        return points
-
-    '''
-
     result = gpt3(
         f'# Given the code of a function, write the description in natural language.\n{code}\n\n# Explanation of the code:\n#')
 
@@ -125,14 +111,9 @@ def code_has_bugs(code):
 
 @retry
 def code_without_names(code):
-    # Take code and use GPT3 to remove all variable names and other identifiers
-
-    # replace all variable names with "X", "Y", "Z", etc.
-
     result = gpt3(
         f'Given the code of a function, remove all variable names and other identifiers, replacing them with x, y, z etc.. The code should still be valid. Give only the code.\nFunction: {code}\nCode without names:')
-    result_text = result
-    return result_text
+    return result
 
 
 def code_is_parsable(code):
